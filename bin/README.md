@@ -1,5 +1,5 @@
-Coverage: 5%
-# Inventory Management system (IMS) Project
+Coverage: 34%
+# Project Title
 
 One Paragraph of project description goes here
 
@@ -75,7 +75,6 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
-* **Tawanda Siyamachira** - [tsiyamachiraqa](https://github.com/TSiyamachiraQA)
 
 ## License
 
