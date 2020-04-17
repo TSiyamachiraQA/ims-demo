@@ -5,7 +5,7 @@ import java.util.List;
 import com.qa.ims.persistence.dao.Dao;
 import com.qa.ims.persistence.domain.Items;
 
-public class ItemsServices  implements CrudServices<Items> {
+public class ItemsServices implements CrudServices<Items> {
 	
 private Dao<Items> itemsDao;
 	
@@ -25,8 +25,8 @@ private Dao<Items> itemsDao;
 		return itemsDao.update(items);
 	}
 
-	public void delete(Long productid) {
-		itemsDao.delete(productid);
+	public void delete(Long product_id) {
+		itemsDao.delete(product_id);
 	}
 
 }
