@@ -15,7 +15,7 @@ public class ItemsTest {
 	
 	private Items items;
 	private Items other;
-	
+
 	@Before
 	public void setUp() {
 		items = new Items(1L, "Gears of War", Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.50)), Integer.valueOf(10));
@@ -54,7 +54,7 @@ public class ItemsTest {
 	}
 	
 	@Test
-	public void createCustomerWithId() {
+	public void createItemsWithId() {
 		assertEquals(1L, items.getProduct_id(), 0);
 		assertEquals("Gears of War", items.getTitle());
 		assertEquals(Integer.valueOf(18), items.getRating());

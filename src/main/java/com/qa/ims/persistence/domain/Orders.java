@@ -9,7 +9,7 @@ public class Orders {
 	private Integer quantity;
 	private BigDecimal total;
 	
-	
+
 	public Orders(Long customer_id, Integer quantity, BigDecimal total) {
 		this.customer_id = customer_id;
 		this.quantity = quantity;	

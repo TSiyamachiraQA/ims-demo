@@ -12,7 +12,7 @@ private Dao<Orders> ordersDao;
 	public OrdersServices(Dao<Orders> ordersDao) {
 		this.ordersDao = ordersDao;
 	}
-	
+
 	public List<Orders> readAll() {
 		return ordersDao.readAll();
 	}

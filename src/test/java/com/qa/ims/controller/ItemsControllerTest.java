@@ -23,7 +23,7 @@ public class ItemsControllerTest {
 	@Mock
 	private ItemsServices itemsServices;
 	
-	
+
 	@Spy
 	@InjectMocks
 	private ItemsController itemsController;
@@ -46,7 +46,10 @@ public class ItemsControllerTest {
 		Integer rating = Integer.valueOf(18);
 		BigDecimal price = BigDecimal.valueOf(Double.valueOf(37.5));
 		Integer stock = Integer.valueOf(10);
-		Mockito.doReturn(title, rating, price, stock).when(itemsController).getInput();
+		String rating1 = "18";
+		String price1 = "37.5";
+		String stock1 = "10";
+		Mockito.doReturn(title, rating1, price1, stock1).when(itemsController).getInput();
 		Items items = new Items(title, rating, price, stock);
 		Items savedItems = new Items(1L, "Gears of War", Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.5)), Integer.valueOf(10));
 		Mockito.when(itemsServices.create(items)).thenReturn(savedItems);
@@ -55,12 +58,12 @@ public class ItemsControllerTest {
 	
 	@Test
 	public void updateTest() {
-		Long product_id = Long.valueOf(1);
 		String title = "Gears of War";
-		Integer rating = Integer.valueOf(18);
-		BigDecimal price = BigDecimal.valueOf(Double.valueOf(37.5));
-		Integer stock = Integer.valueOf(10);
-		Mockito.doReturn(product_id, title, rating, price, stock).when(itemsController).getInput();
+		String product_id = "1";
+		String rating1 = "18";
+		String price1 = "37.5";
+		String stock1 = "10";
+		Mockito.doReturn(product_id, title, rating1, price1, stock1).when(itemsController).getInput();
 		Items items = new Items(1L, "Gears of War", Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.5)), Integer.valueOf(10));
 		Mockito.when(itemsServices.update(items)).thenReturn(items);
 		assertEquals(items, itemsController.update());

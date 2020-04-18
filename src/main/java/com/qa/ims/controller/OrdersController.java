@@ -18,7 +18,7 @@ public static final Logger LOGGER = Logger.getLogger(OrdersController.class);
 	public OrdersController(CrudServices<Orders> ordersService) {
 		this.ordersService = ordersService;
 	}
-	
+
 	String getInput() {
 		return Utils.getInput();
 	}
@@ -45,7 +45,7 @@ public static final Logger LOGGER = Logger.getLogger(OrdersController.class);
 		return order;
 		
 	}
-
+ 
 	@Override
 	public Orders update() {
 		LOGGER.info("Please enter the id of the order you would like to update");

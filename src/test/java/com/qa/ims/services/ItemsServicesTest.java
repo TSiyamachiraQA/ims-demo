@@ -21,29 +21,29 @@ public class ItemsServicesTest {
 	
 	@InjectMocks
 	private ItemsServices itemsServices;
-	
+
 	@Test
-	public void customerServicesCreate() {
+	public void itemsServicesCreate() {
 		Items items = new Items("Gears of War", Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.50)), Integer.valueOf(10));
 		itemsServices.create(items);
 		Mockito.verify(itemsDao, Mockito.times(1)).create(items);
 	}
 	
 	@Test
-	public void customerServicesRead() {
+	public void itemsServicesRead() {
 		itemsServices.readAll();
 		Mockito.verify(itemsDao, Mockito.times(1)).readAll();
 	}
 	
 	@Test
-	public void customerServicesUpdate() {
+	public void itemsServicesUpdate() {
 		Items items = new Items("Gears of War", Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.50)), Integer.valueOf(10));
 		itemsServices.update(items);
 		Mockito.verify(itemsDao, Mockito.times(1)).update(items);
 	}
 	
 	@Test
-	public void customerServicesDelete() {
+	public void itemsServicesDelete() {
 		itemsServices.delete(1L);;
 		Mockito.verify(itemsDao, Mockito.times(1)).delete(1L);
 	}
