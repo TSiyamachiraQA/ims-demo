@@ -2,41 +2,41 @@ package com.qa.ims.persistence.domain;
 
 public class Orderline {
 	
-	private Long order_id;
-	private Long product_id;
+	private Long orderId;
+	private Long productId;
 	
-	public Orderline(Long order_id, Long product_id) {
-		this.order_id = order_id;
-		this.product_id = product_id;	
+	public Orderline(Long orderId, Long productId) {
+		this.orderId = orderId;
+		this.productId = productId;	
 	}
 	
-	public Long getOrder_id() {
-		return order_id;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrder_id(Long order_id) {
-		this.order_id = order_id;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
-	public Long getProduct_id() {
-		return product_id;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setProduct_id(Long product_id) {
-		this.product_id = product_id;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	
 	public String toString() {
-		return " order id:" + order_id + "product id:" + product_id ;
+		return " order id:" + orderId + "product id:" + productId ;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((order_id == null) ? 0 : order_id.hashCode());
-		result = prime * result + ((product_id == null) ? 0 : product_id.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
 		return result;
 	}
 
@@ -49,15 +49,15 @@ public class Orderline {
 		if (getClass() != obj.getClass())
 			return false;
 		Orderline other = (Orderline) obj;
-		if (order_id == null) {
-			if (other.order_id != null)
+		if (orderId == null) {
+			if (other.orderId != null)
 				return false;
-		} else if (!order_id.equals(other.order_id))
+		} else if (!orderId.equals(other.orderId))
 			return false;
-		if (product_id == null) {
-			if (other.product_id != null)
+		if (productId == null) {
+			if (other.productId != null)
 				return false;
-		} else if (!product_id.equals(other.product_id))
+		} else if (!productId.equals(other.productId))
 			return false;
 		return true;
 	}

@@ -32,11 +32,11 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 		this.password = password;
 	}
 	
-	Orderline OrderlineFromResultSet(ResultSet resultSet) throws SQLException {
-		Long order_id = resultSet.getLong("order_id");
-		Long product_id = resultSet.getLong("product_id");
+	Orderline orderlineFromResultSet(ResultSet resultSet) throws SQLException {
+		Long orderId = resultSet.getLong("order_id");
+		Long productId = resultSet.getLong("product_id");
 		
-		return new Orderline(order_id, product_id);
+		return new Orderline(orderId, productId);
 	}
 	
 	public List<Orderline> readAll() {
@@ -45,7 +45,7 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 				ResultSet resultSet = statement.executeQuery("select * from orderline");) {
 			ArrayList<Orderline> orderlines = new ArrayList<>();
 			while (resultSet.next()) {
-				orderlines.add(OrderlineFromResultSet(resultSet));
+				orderlines.add(orderlineFromResultSet(resultSet));
 			}
 			return orderlines;
 		} catch (SQLException e) {
@@ -60,7 +60,7 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM orderline ORDER BY order_id DESC LIMIT 1");) {
 			resultSet.next();
-			return OrderlineFromResultSet(resultSet);
+			return orderlineFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -71,8 +71,8 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 	public Orderline create(Orderline orderline) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orderline(order_id, product_id) values('" + orderline.getOrder_id()
-					+ "','" + orderline.getProduct_id()+"')");
+			statement.executeUpdate("insert into orderline(order_id, product_id) values('" + orderline.getOrderId()
+					+ "','" + orderline.getProductId()+"')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -81,12 +81,12 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 		return null;
 	}
 	
-	public Orderline readItems(Long order_id) {
+	public Orderline readItems(Long orderId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orderline where order_id = " + order_id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orderline where order_id = " + orderId);) {
 			resultSet.next();
-			return OrderlineFromResultSet(resultSet);
+			return orderlineFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -98,19 +98,19 @@ public class OrderlineDaoMySQL implements Dao<Orderline>{
 	public Orderline update(Orderline orderline) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update items set product_id ='" + orderline.getProduct_id()+
-					"' where order_id =" + orderline.getOrder_id());
-			return readItems(orderline.getOrder_id());
+			statement.executeUpdate("update items set product_id ='" + orderline.getProductId()+
+					"' where order_id =" + orderline.getOrderId());
+			return readItems(orderline.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
 		}
 		return null;
 	}
-	public void delete(long order_id) {
+	public void delete(long orderId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from items where order_id = " + order_id);
+			statement.executeUpdate("delete from items where order_id = " + orderId);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

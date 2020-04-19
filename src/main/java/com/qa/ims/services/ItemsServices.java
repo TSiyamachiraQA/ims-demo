@@ -25,8 +25,8 @@ private Dao<Items> itemsDao;
 		return itemsDao.update(items);
 	}
 
-	public void delete(Long product_id) {
-		itemsDao.delete(product_id);
+	public void delete(Long productId) {
+		itemsDao.delete(productId);
 	}
 
 }

@@ -34,13 +34,13 @@ public class ItemsDaoMySQL implements Dao<Items>{
 	}
 	
 	Items itemsFromResultSet(ResultSet resultSet) throws SQLException {
-		Long product_id = resultSet.getLong("product_id");
+		Long productId = resultSet.getLong("product_id");
 		String title = resultSet.getString("title");
 		Integer rating = resultSet.getInt("rating");
 		BigDecimal price = resultSet.getBigDecimal("price");
 		Integer stock = resultSet.getInt("stock");
 		
-		return new Items(product_id, title, rating, price, stock);
+		return new Items(productId, title, rating, price, stock);
 	}
 	
 	public List<Items> readAll() {
@@ -86,10 +86,10 @@ public class ItemsDaoMySQL implements Dao<Items>{
 		return null;
 	}
 
-	public Items readItems(Long product_id) {
+	public Items readItems(Long productId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where product_id = " + product_id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where product_id = " + productId);) {
 			resultSet.next();
 			return itemsFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -105,8 +105,8 @@ public class ItemsDaoMySQL implements Dao<Items>{
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update items set title ='" + items.getTitle() + "', rating ='"
 					+ items.getRating() + "', price ='" + items.getPrice() + "', stock ='" + items.getStock() +
-					"' where product_id =" + items.getProduct_id());
-			return readItems(items.getProduct_id());
+					"' where product_id =" + items.getProductId());
+			return readItems(items.getProductId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -115,10 +115,10 @@ public class ItemsDaoMySQL implements Dao<Items>{
 	}
 	
 	
-	public void delete(long product_id) {
+	public void delete(long productId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from items where product_id = " + product_id);
+			statement.executeUpdate("delete from items where product_id = " + productId);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

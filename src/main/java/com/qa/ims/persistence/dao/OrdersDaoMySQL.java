@@ -34,12 +34,12 @@ public class OrdersDaoMySQL implements Dao<Orders>{
 	}
 	
 	Orders ordersFromResultSet(ResultSet resultSet) throws SQLException {
-		Long order_id = resultSet.getLong("order_id");
-		Long customer_id = resultSet.getLong("customer_id");
+		Long orderId = resultSet.getLong("order_id");
+		Long customerId = resultSet.getLong("customer_id");
 		Integer quantity = resultSet.getInt("quantity");
 		BigDecimal total = resultSet.getBigDecimal("total");
 	
-		return new Orders(order_id, customer_id, quantity, total);
+		return new Orders(orderId, customerId, quantity, total);
 	}
 	
 	public List<Orders> readAll() {
@@ -74,7 +74,7 @@ public class OrdersDaoMySQL implements Dao<Orders>{
 	public Orders create(Orders order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders(customer_id, quantity, total) values('" + order.getCustomer_id()
+			statement.executeUpdate("insert into orders(customer_id, quantity, total) values('" + order.getCustomerId()
 					+ "','" + order.getQuantity() + "','" + order.getTotal() +"')");
 			return readLatest();
 		} catch (Exception e) {
@@ -84,10 +84,10 @@ public class OrdersDaoMySQL implements Dao<Orders>{
 		return null;
 	}
 
-	public Orders readOrders(Long order_id) {
+	public Orders readOrders(Long orderId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where order_id = " + order_id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders where order_id = " + orderId);) {
 			resultSet.next();
 			return ordersFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -101,10 +101,10 @@ public class OrdersDaoMySQL implements Dao<Orders>{
 	public Orders update(Orders order) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update orders set customer_id =" + order.getCustomer_id() 
+			statement.executeUpdate("update orders set customer_id =" + order.getCustomerId() 
 			+ ", quantity =" + order.getQuantity() + ", total=" + order.getTotal() 
-			+ " where order_id =" + order.getOrder_id());
-			return readOrders(order.getOrder_id());
+			+ " where order_id =" + order.getOrderId());
+			return readOrders(order.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -113,10 +113,10 @@ public class OrdersDaoMySQL implements Dao<Orders>{
 	}
 	
 	
-	public void delete(long order_id) {
+	public void delete(long orderId) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from orders where order_id = " + order_id);
+			statement.executeUpdate("delete from orders where order_id = " + orderId);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

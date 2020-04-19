@@ -4,41 +4,41 @@ import java.math.BigDecimal;
 
 public class Orders {
 
-	private Long order_id;
-	private Long customer_id;
+	private Long orderId;
+	private Long customerId;
 	private Integer quantity;
 	private BigDecimal total;
 	
 
-	public Orders(Long customer_id, Integer quantity, BigDecimal total) {
-		this.customer_id = customer_id;
+	public Orders(Long customerId, Integer quantity, BigDecimal total) {
+		this.customerId = customerId;
 		this.quantity = quantity;	
 		this.total = total;
 	}
 
-	public Orders(Long order_id, Long customer_id, Integer quantity, BigDecimal total) {
-		this.order_id = order_id;
-		this.customer_id = customer_id;
+	public Orders(Long orderId, Long customerId, Integer quantity, BigDecimal total) {
+		this.orderId = orderId;
+		this.customerId = customerId;
 		this.quantity = quantity;	
 		this.total = total;
 		
 	}
 	
 	
-	public Long getOrder_id() {
-		return order_id;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setOrder_id(Long order_id) {
-		this.order_id = order_id;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
-	public Long getCustomer_id() {
-		return customer_id;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer_id(Long customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public Integer getQuantity() {
@@ -58,15 +58,15 @@ public class Orders {
 	}
 
 	public String toString() {
-		return "order id:" + order_id + " customer id:" + customer_id + " order placed:" + quantity + " total:" + total;
+		return "order id:" + orderId + " customer id:" + customerId + " order placed:" + quantity + " total:" + total;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customer_id == null) ? 0 : customer_id.hashCode());
-		result = prime * result + ((order_id == null) ? 0 : order_id.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
 		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		result = prime * result + ((total == null) ? 0 : total.hashCode());
 		return result;
@@ -81,15 +81,15 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		if (customer_id == null) {
-			if (other.customer_id != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer_id.equals(other.customer_id))
+		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (order_id == null) {
-			if (other.order_id != null)
+		if (orderId == null) {
+			if (other.orderId != null)
 				return false;
-		} else if (!order_id.equals(other.order_id))
+		} else if (!orderId.equals(other.orderId))
 			return false;
 		if (quantity == null) {
 			if (other.quantity != null)

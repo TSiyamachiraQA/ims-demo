@@ -27,7 +27,7 @@ import com.qa.ims.services.OrderlineServices;
 import com.qa.ims.services.OrdersServices;
 import com.qa.ims.utils.Utils;
 
-public class Ims {
+public class Ims { 
 
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
 

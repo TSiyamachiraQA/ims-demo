@@ -24,14 +24,14 @@ public class ItemsTest {
 	
 	@Test
 	public void settersTest() {
-		assertNotNull(items.getProduct_id());
+		assertNotNull(items.getProductId());
 		assertNotNull(items.getTitle());
 		assertNotNull(items.getRating());
 		assertNotNull(items.getPrice());
 		assertNotNull(items.getStock());
 		
-		items.setProduct_id(null);
-		assertNull(items.getProduct_id());
+		items.setProductId(null);
+		assertNull(items.getProductId());
 		items.setTitle(null);
 		assertNull(items.getTitle());
 		items.setRating(null);
@@ -55,7 +55,7 @@ public class ItemsTest {
 	
 	@Test
 	public void createItemsWithId() {
-		assertEquals(1L, items.getProduct_id(), 0);
+		assertEquals(1L, items.getProductId(), 0);
 		assertEquals("Gears of War", items.getTitle());
 		assertEquals(Integer.valueOf(18), items.getRating());
 		assertEquals(BigDecimal.valueOf(Double.valueOf(37.50)), items.getPrice());
@@ -97,20 +97,20 @@ public class ItemsTest {
 //	
 	@Test
 	public void nullProductId() {
-		items.setProduct_id(null);
+		items.setProductId(null);
 		assertFalse(items.equals(other));
 	}
 	
 	@Test
 	public void nullProductIdOnBoth() {
-		items.setProduct_id(null);
-		other.setProduct_id(null);
+		items.setProductId(null);
+		other.setProductId(null);
 		assertTrue(items.equals(other));
 	}
 	
 	@Test
 	public void otherProductIdDifferent() {
-		other.setProduct_id(2L);
+		other.setProductId(2L);
 		assertFalse(items.equals(other));
 	}
 //	

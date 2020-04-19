@@ -25,8 +25,8 @@ private Dao<Orders> ordersDao;
 		return ordersDao.update(order);
 	}
 
-	public void delete(Long order_id) {
-		ordersDao.delete(order_id);
+	public void delete(Long orderId) {
+		ordersDao.delete(orderId);
 	}
 
 }

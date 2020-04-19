@@ -53,7 +53,7 @@ public class ItemsController implements CrudController<Items> {
 	@Override
 	public Items update() {
 		LOGGER.info("Please enter the id of the product you would like to update");
-		Long product_id = Long.valueOf(getInput());
+		Long productId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the title of the product");
 		String title = getInput();
 		LOGGER.info("Please enter the rating of the product");
@@ -62,7 +62,7 @@ public class ItemsController implements CrudController<Items> {
 		BigDecimal price = BigDecimal.valueOf(Double.valueOf(getInput()));
 		LOGGER.info("Please enter the available stock of the product");
 		Integer stock = Integer.valueOf(getInput());
-		Items item = itemsService.update(new Items(product_id, title, rating, price, stock));
+		Items item = itemsService.update(new Items(productId, title, rating, price, stock));
 		LOGGER.info("Product Updated");
 		return item;
 	
@@ -71,8 +71,8 @@ public class ItemsController implements CrudController<Items> {
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the product you would like to delete");
-		Long product_id = Long.valueOf(getInput());
-		itemsService.delete(product_id);
+		Long productId = Long.valueOf(getInput());
+		itemsService.delete(productId);
 		LOGGER.info("Product Deleted");
 		
 	}

@@ -34,10 +34,10 @@ public static final Logger LOGGER = Logger.getLogger(OrderlineController.class);
 	@Override
 	public Orderline create() {
 		LOGGER.info("Please enter the id of the order you want to add");
-		Long order_id = Long.valueOf(getInput());
+		Long orderId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the id of the product you want to add");
-		Long product_id = Long.valueOf(getInput());
-		Orderline orderline = orderlineService.create(new Orderline(order_id, product_id));
+		Long productId = Long.valueOf(getInput());
+		Orderline orderline = orderlineService.create(new Orderline(orderId, productId));
 		LOGGER.info("Orderline added to inventory");
 		return orderline;
 	}
@@ -45,10 +45,10 @@ public static final Logger LOGGER = Logger.getLogger(OrderlineController.class);
 	@Override
 	public Orderline update() {
 		LOGGER.info("Please enter the id of the order you want to update");
-		Long order_id = Long.valueOf(getInput());
+		Long orderId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the id of the product you want to update");
-		Long product_id = Long.valueOf(getInput());
-		Orderline orderline = orderlineService.update(new Orderline(order_id, product_id));
+		Long productId = Long.valueOf(getInput());
+		Orderline orderline = orderlineService.update(new Orderline(orderId, productId));
 		LOGGER.info("Orderline has been updated");
 		return orderline;
 	}
@@ -56,8 +56,8 @@ public static final Logger LOGGER = Logger.getLogger(OrderlineController.class);
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the order id of the orderline you would like to delete");
-		Long order_id = Long.valueOf(getInput());
-		orderlineService.delete(order_id);
+		Long orderId = Long.valueOf(getInput());
+		orderlineService.delete(orderId);
 		LOGGER.info("Orderline Deleted");
 		
 	}

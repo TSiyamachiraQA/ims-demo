@@ -24,16 +24,16 @@ public class OrdersTest {
 	
 	@Test
 	public void settersTest() {
-		assertNotNull(orders.getOrder_id());
-		assertNotNull(orders.getCustomer_id());
+		assertNotNull(orders.getOrderId());
+		assertNotNull(orders.getCustomerId());
 		assertNotNull(orders.getQuantity());
 		assertNotNull(orders.getTotal());
 		
 		
-		orders.setOrder_id(null);
-		assertNull(orders.getOrder_id());
-		orders.setCustomer_id(null);
-		assertNull(orders.getCustomer_id());
+		orders.setOrderId(null);
+		assertNull(orders.getOrderId());
+		orders.setCustomerId(null);
+		assertNull(orders.getCustomerId());
 		orders.setQuantity(null);
 		assertNull(orders.getQuantity());
 		orders.setTotal(null);
@@ -53,8 +53,8 @@ public class OrdersTest {
 	
 	@Test
 	public void createOrderWithId() {
-		assertEquals(1L, orders.getOrder_id(), 0);
-		assertEquals(Long.valueOf(1L), orders.getCustomer_id());
+		assertEquals(1L, orders.getOrderId(), 0);
+		assertEquals(Long.valueOf(1L), orders.getCustomerId());
 		assertEquals(Integer.valueOf(10), orders.getQuantity());
 		assertEquals(BigDecimal.valueOf(Double.valueOf(37.50)), orders.getTotal());
 
@@ -75,40 +75,40 @@ public class OrdersTest {
 	
 	@Test
 	public void customersIdNullButOtherNameNotNull() {
-		orders.setCustomer_id(null);
+		orders.setCustomerId(null);
 		assertFalse(orders.equals(other));
 	}
 	
 	@Test
 	public void customersIdNotEqual() {
-		other.setCustomer_id(3L);
+		other.setCustomerId(3L);
 		assertFalse(orders.equals(other));
 	}
 	
 	@Test
 	public void checkEqualityBetweenDifferentObjectsNullTitle() {
-		orders.setCustomer_id(null);
-		other.setCustomer_id(null);
+		orders.setCustomerId(null);
+		other.setCustomerId(null);
 		assertTrue(orders.equals(other));
 	}
 //	
 //	
 	@Test
 	public void nullOrderId() {
-		orders.setOrder_id(null);
+		orders.setOrderId(null);
 		assertFalse(orders.equals(other));
 	}
 	
 	@Test
 	public void nullOrderIdOnBoth() {
-		orders.setOrder_id(null);
-		other.setOrder_id(null);
+		orders.setOrderId(null);
+		other.setOrderId(null);
 		assertTrue(orders.equals(other));
 	}
 	
 	@Test
 	public void otherOrderIdDifferent() {
-		other.setOrder_id(2L);
+		other.setOrderId(2L);
 		assertFalse(orders.equals(other));
 	}
 //	
@@ -156,7 +156,7 @@ public class OrdersTest {
 	@Test
 	public void constructorWithoutOrderId() {
 		orders = new Orders(2L, Integer.valueOf(18), BigDecimal.valueOf(Double.valueOf(37.50)));
-		assertNotNull(orders.getCustomer_id());
+		assertNotNull(orders.getCustomerId());
 		assertNotNull(orders.getQuantity());
 		assertNotNull(orders.getTotal());
 	}

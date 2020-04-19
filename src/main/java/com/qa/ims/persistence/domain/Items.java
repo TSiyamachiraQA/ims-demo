@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Items {
 	
-	private Long product_id;
+	private Long productId;
 	private String title;
 	private Integer rating;
 	private BigDecimal price;
@@ -17,11 +17,11 @@ public class Items {
 		this.stock = stock;
 	}
 
-	public Items(Long product_id, String title, Integer rating, BigDecimal price, Integer stock) {
+	public Items(Long productId, String title, Integer rating, BigDecimal price, Integer stock) {
 		this.title = title;
 		this.rating = rating;
 		this.price = price;
-		this.product_id = product_id;
+		this.productId = productId;
 		this.stock = stock;
 	}
 
@@ -33,24 +33,17 @@ public class Items {
 		this.stock = stock;
 	}
 
-	public Long getProductid() {
-		return product_id;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setProductid(Long product_id) {
-		this.product_id = product_id;
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public String getTitle() {
 		return title;
-	}
-
-	public Long getProduct_id() {
-		return product_id;
-	}
-
-	public void setProduct_id(Long product_id) {
-		this.product_id = product_id;
+	
 	}
 
 	public void setTitle(String title) {
@@ -74,7 +67,7 @@ public class Items {
 	}
 	
 	public String toString() {
-		return "product id:" + product_id + " title:" + title + " rating:" + rating + " price:" + price + " stock:" + stock;
+		return "product id:" + productId + " title:" + title + " rating:" + rating + " price:" + price + " stock:" + stock;
 	}
 
 	@Override
@@ -82,7 +75,7 @@ public class Items {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((product_id == null) ? 0 : product_id.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + ((stock == null) ? 0 : stock.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -103,10 +96,10 @@ public class Items {
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
-		if (product_id == null) {
-			if (other.product_id != null)
+		if (productId == null) {
+			if (other.productId != null)
 				return false;
-		} else if (!product_id.equals(other.product_id))
+		} else if (!productId.equals(other.productId))
 			return false;
 		if (rating == null) {
 			if (other.rating != null)

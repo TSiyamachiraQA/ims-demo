@@ -35,12 +35,12 @@ public static final Logger LOGGER = Logger.getLogger(OrdersController.class);
 	@Override
 	public Orders create() {
 		LOGGER.info("Please enter the customer id");
-		Long customer_id = Long.valueOf(getInput());
+		Long customerId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the quantity of products ordered");
 		Integer quantity = Integer.valueOf(getInput());
 		LOGGER.info("Please enter the total price of the order");
 		BigDecimal total = BigDecimal.valueOf(Double.valueOf(getInput()));
-		Orders order = ordersService.create(new Orders(customer_id, quantity, total));
+		Orders order = ordersService.create(new Orders(customerId, quantity, total));
 		LOGGER.info("Product added to inventory");
 		return order;
 		
@@ -49,14 +49,14 @@ public static final Logger LOGGER = Logger.getLogger(OrdersController.class);
 	@Override
 	public Orders update() {
 		LOGGER.info("Please enter the id of the order you would like to update");
-		Long order_id = Long.valueOf(getInput());
+		Long orderId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the customer id");
-		Long customer_id = Long.valueOf(getInput());
+		Long customerId = Long.valueOf(getInput());
 		LOGGER.info("Please enter the quantity of products ordered");
 		Integer quantity = Integer.valueOf(getInput());
 		LOGGER.info("Please enter the total price of the order");
 		BigDecimal total = BigDecimal.valueOf(Double.valueOf(getInput()));
-		Orders order = ordersService.update(new Orders(order_id, customer_id, quantity, total));
+		Orders order = ordersService.update(new Orders(orderId, customerId, quantity, total));
 		LOGGER.info("Product Updated");
 		return order;
 	}
@@ -64,8 +64,8 @@ public static final Logger LOGGER = Logger.getLogger(OrdersController.class);
 	@Override
 	public void delete() {
 		LOGGER.info("Please enter the id of the order you would like to delete");
-		Long order_id = Long.valueOf(getInput());
-		ordersService.delete(order_id);
+		Long orderId = Long.valueOf(getInput());
+		ordersService.delete(orderId);
 		LOGGER.info("Product Deleted");
 		
 	}
